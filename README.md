@@ -85,7 +85,13 @@ npm install
 npm run dev
 ```
 
-### 3️⃣ Features
+### 2️3️⃣ Run Python Script (irrigo-api)
+
+```sh
+flask run 
+```
+
+###  Features
 
 - **Live Sensor Data Dashboard**
 - **Manual Pump Control**
