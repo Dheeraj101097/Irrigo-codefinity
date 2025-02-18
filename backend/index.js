@@ -14,6 +14,7 @@ app.use(express.json());
 let temperature = null;
 let humidity = null;
 let soilmoisture = null;
+let pump_status = null;
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
@@ -34,15 +35,15 @@ app.get("/data", (req, res) => {
     soilmoisture: soilmoisture,
   });
 });
-let command = 0;
 
 app.post("/control", (req, res) => {
   console.log("Command received:", req.body);
-  command = req.body.pump_status;
+  pump_status = req.body.pump_status;
   res.status(200).json({ message: " control Data received successfully" });
 });
 app.get("/control", (req, res) => {
-  res.json({ pump_status: command });
+  console.log("Pump status:", pump_status); // Now pump_status will be defined
+  res.json({ pump_status: pump_status });
 });
 
 app.listen(port, () => {

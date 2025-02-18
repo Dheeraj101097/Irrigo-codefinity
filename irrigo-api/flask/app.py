@@ -51,8 +51,6 @@ def fetch_and_control():
                 print("Pump Status:", pump_status)
 
                     # Send pump status to Node.js
-                control_response = requests.post(CONTROL_URL, json={"pump_status": pump_status})
-                print("pump Control Response:", control_response.json())
 
                 # Predict water requirement
                 if all(key in sensor_data for key in ["soilmoisture", "humidity", "temperature"]):
@@ -60,7 +58,7 @@ def fetch_and_control():
                         "soil_moisture": [sensor_data['soilmoisture']],
                         "humidity": [sensor_data['humidity']],
                         "temperature": [sensor_data['temperature']],
-                        "predicted_rainfall": [10],
+                        "predicted_rainfall": [20],
                     })
 
                 # Predict water requirement
@@ -69,9 +67,22 @@ def fetch_and_control():
                     print("Predicted Water Requirement:", water_required)
 
                     # Send water requirement to Node.js
-                    water_control_response = requests.post(CONTROL_URL, json={"water_required": water_required})
-                    print("Water Control Response:", water_control_response.json())
-
+                    # water_control_response = requests.post(CONTROL_URL, json={"water_required": water_required})
+                    # print("Water Control Response:", water_control_response.json())
+                control_payload = {
+                        "pump_status": pump_status,
+                        "water_required": water_required
+                    }
+                # control_response = requests.post(CONTROL_URL, json={"payload": control_payload})
+                # print("pump Control Response:", control_response.json())
+                try:
+                    control_response = requests.post(CONTROL_URL, json=control_payload)
+                    if control_response.status_code == 200:
+                        print("Control Response:", control_response.json())
+                    else:
+                        print(f"Failed to send control data. Status Code: {control_response.status_code}")
+                except requests.exceptions.RequestException as e:
+                    print(f"Error sending control data: {e}")
                 
 
             else:

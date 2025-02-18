@@ -8,12 +8,13 @@ import pumpOffImage from "../assets/pump.png";
 import temperatureHotImage from "../assets/temph.png";
 import temperatureCoolImage from "../assets/templ.png";
 import Rainprediction from "../components/Rainprediction";
+import water from "../assets/water.png";
 
 const Pumpstatus = () => {
   const [soilMoisture, setSoilMoisture] = useState(56);
   const [pumpStatus, setPumpStatus] = useState("On");
   const [temperature, setTemperature] = useState(28); // Degrees Celsius
-  const [batteryLevel, setBatteryLevel] = useState(85); // Battery percentage
+  const [waterreq, setwaterreq] = useState(30); // Battery percentage
 
   const fetchingData = async () => {
     try {
@@ -21,7 +22,7 @@ const Pumpstatus = () => {
       const responsedata = await response.json();
       const controlresponse = await fetch("http://localhost:3000/control");
       const controlresponsedata = await controlresponse.json();
-      // console.log(controlresponsedata);
+      console.log(controlresponsedata);
       // console.log(responsedata);
 
       // Update current data
@@ -44,7 +45,7 @@ const Pumpstatus = () => {
         <h1 className="text-4xl font-bold  bg-[#1f2120] text-[#96facb] p-6 text-center ">
           Soil & Irrigation Monitoring
         </h1>
-        <div className="grid grid-cols-3 gap-6 items-center justify-center m-10   p-4 mx-auto">
+        <div className="grid grid-cols-4 gap-6 items-center justify-center m-10   p-4 mx-auto">
           {/* Soil Moisture Section */}
           <div className="rounded-lg shadow-lg bg-gradient-to-br from-red-400 to-red-200  p-6 w-full max-w-md ">
             <h2 className="text-xl font-semibold mb-4 text-white">
@@ -78,6 +79,16 @@ const Pumpstatus = () => {
                 alt="Pump Status"
                 className="h-16 w-16"
               />
+            </div>
+          </div>
+          {/*  */}
+          <div className="rounded-lg shadow-lg bg-gradient-to-br from-teal-300 to-teal-100 p-6 w-full max-w-md ">
+            <h2 className="text-xl font-semibold mb-4 text-gray-700">
+              Water Required (Lt)
+            </h2>
+            <div className="flex items-center justify-between">
+              <p className={`text-3xl font-bold text-black `}>{waterreq}</p>
+              <img src={water} alt="Pump Status" className="h-16 w-16" />
             </div>
           </div>
 
