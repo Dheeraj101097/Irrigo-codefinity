@@ -1,10 +1,10 @@
 # Irrigo-codefinity
 
-# Predictive Irrigation System using ESP32 and TensorFlow Lite
+# Predictive Irrigation System using ESP32 
 
 ## 📌 Project Overview
 
-This project is a **Smart Irrigation System** that uses **Edge AI on ESP32** to predict whether irrigation is needed based on real-time **sensor data**. It features a **Node.js Backend**, a **React Frontend**, and an **ESP32-based Edge AI model using TensorFlow Lite**.
+This project is a **Smart Irrigation System** that uses ** AI Models ** to predict whether irrigation is needed based on real-time **sensor data**. It features a **Node.js Backend**, a **React Frontend**, and an **ESP32-based Edge AI model **.
 
 ## 🚀 Features
 
@@ -44,13 +44,7 @@ This project is a **Smart Irrigation System** that uses **Edge AI on ESP32** to 
 4. Run:
    Arduino code
 
-### 4️⃣ TensorFlow Lite Model
 
-1. Train a TinyML model using **Google Colab / Edge Impulse**.
-2. Convert the model to **TensorFlow Lite (.tflite)**.
-3. Include `model_data.h` in the ESP32 project.
-
----
 
 ## 🌐 Backend Setup (Node.js + Express + MongoDB)
 
@@ -91,7 +85,13 @@ npm install
 npm run dev
 ```
 
-### 3️⃣ Features
+### 2️3️⃣ Run Python Script (irrigo-api)
+
+```sh
+flask run 
+```
+
+###  Features
 
 - **Live Sensor Data Dashboard**
 - **Manual Pump Control**
