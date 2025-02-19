@@ -11,7 +11,7 @@ import Rainprediction from "../components/Rainprediction";
 import water from "../assets/water.png";
 
 const Pumpstatus = () => {
-  const [soilMoisture, setSoilMoisture] = useState(56);
+  const [soilMoisture, setSoilMoisture] = useState(0);
   const [pumpStatus, setPumpStatus] = useState("On");
   const [temperature, setTemperature] = useState(28); // Degrees Celsius
   const [waterreq, setwaterreq] = useState(30); // Battery percentage
@@ -29,6 +29,7 @@ const Pumpstatus = () => {
       setSoilMoisture(responsedata.soilmoisture);
       setTemperature(responsedata.temperature);
       setPumpStatus(controlresponsedata.pump_status === 1 ? "On" : "Off");
+      setwaterreq(controlresponsedata.water_required);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
@@ -40,6 +41,15 @@ const Pumpstatus = () => {
   }, []);
   return (
     <>
+      <header className="bg-green-500 p-4 text-white flex justify-between items-center">
+        <h2 className="text-xl font-bold">Irrigation System Dashboard</h2>
+        <div className="flex justify-evenly space-x-16">
+          <a href="/">Home</a>
+          <a href="/pumpstatus">Pump Status</a>
+          <a href="/cropdatabase">Crop Settings</a>
+          <a href="#">Logout</a>
+        </div>
+      </header>
       {/* bg-gradient-to-b from-amber-100 to-amber-50 */}
       <div className=" bg-gradient-to-b from-[#1f2120] to-black min-h-screen">
         <h1 className="text-4xl font-bold  bg-[#1f2120] text-[#96facb] p-6 text-center ">
@@ -87,7 +97,9 @@ const Pumpstatus = () => {
               Water Required (Lt)
             </h2>
             <div className="flex items-center justify-between">
-              <p className={`text-3xl font-bold text-black `}>{waterreq}</p>
+              <p className={`text-3xl font-bold text-black `}>
+                {waterreq.toFixed(1)}
+              </p>
               <img src={water} alt="Pump Status" className="h-16 w-16" />
             </div>
           </div>

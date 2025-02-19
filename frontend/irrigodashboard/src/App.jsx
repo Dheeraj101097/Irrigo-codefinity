@@ -7,6 +7,7 @@ import backgroundImage from "./assets/image.png";
 import Dashboard from "./components/Dashboard";
 const bkg = backgroundImage;
 import Pumpstatus from "./pages/Pumpstatus";
+import CropDatabase from "./pages/CropDatabase";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/pumpstatus" element={<Pumpstatus />} />
+        <Route path="/cropdatabase" element={<CropDatabase />} />
       </Routes>
     </>
   );

@@ -102,7 +102,7 @@ const Dashboard = () => {
         <div className="flex justify-evenly space-x-16">
           <a href="/">Home</a>
           <a href="/pumpstatus">Pump Status</a>
-          <a href="#">Crop Settings</a>
+          <a href="/cropdatabase">Crop Settings</a>
           <a href="#">Logout</a>
         </div>
       </header>
@@ -117,16 +117,16 @@ const Dashboard = () => {
         }}
       >
         <div className="bg-blue-100 p-10 mx-10 my-20 rounded-lg shadow-md w-1/4 text-center">
-          <h3 className="font-bold">Soil Moisture</h3>
-          <p>{data.soilmoisture}%</p>
+          <h3 className="font-bold text-xl">Soil Moisture</h3>
+          <p className="text-xl">{data.soilmoisture}%</p>
         </div>
         <div className="bg-yellow-100 p-10 mx-10 my-20 rounded-lg shadow-md w-1/4 text-center">
-          <h3 className="font-bold">Humidity</h3>
-          <p>{data.humidity || 82}%</p>
+          <h3 className="font-bold text-xl">Humidity</h3>
+          <p className="text-xl">{data.humidity || 82}%</p>
         </div>
         <div className="bg-red-100 p-10 mx-10 my-20 rounded-lg shadow-md w-1/4 text-center">
-          <h3 className="font-bold">Temperature</h3>
-          <p>{data.temperature || 24}°C</p>
+          <h3 className="font-bold text-xl">Temperature</h3>
+          <p className="text-xl">{data.temperature || 24}°C</p>
         </div>
       </div>
 
