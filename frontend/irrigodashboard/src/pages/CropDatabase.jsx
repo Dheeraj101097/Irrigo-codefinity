@@ -85,7 +85,6 @@ const CropDatabase = () => {
           <a href="/">Home</a>
           <a href="/pumpstatus">Pump Status</a>
           <a href="/cropdatabase">Crop Settings</a>
-          <a href="#">Logout</a>
         </div>
       </header>
       <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-300 p-6 flex flex-col items-center">

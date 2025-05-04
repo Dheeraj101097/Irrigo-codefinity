@@ -41,23 +41,22 @@ const Pumpstatus = () => {
   }, []);
   return (
     <>
-      <header className="bg-green-500 p-4 text-white flex justify-between items-center">
+      <header className="bg-red-500 p-4 text-white flex justify-between items-center">
         <h2 className="text-xl font-bold">Irrigation System Dashboard</h2>
         <div className="flex justify-evenly space-x-16">
-          <a href="/">Home</a>
+          <a href="/">Home run</a>
           <a href="/pumpstatus">Pump Status</a>
           <a href="/cropdatabase">Crop Settings</a>
-          <a href="#">Logout</a>
         </div>
       </header>
       {/* bg-gradient-to-b from-amber-100 to-amber-50 */}
       <div className=" bg-gradient-to-b from-[#1f2120] to-black min-h-screen">
-        <h1 className="text-4xl font-bold  bg-[#1f2120] text-[#96facb] p-6 text-center ">
+        <h1 className="text-4xl font-bold  bg-[#1f2120] text-[#cf1212] p-6 text-center ">
           Soil & Irrigation Monitoring
         </h1>
         <div className="grid grid-cols-4 gap-6 items-center justify-center m-10   p-4 mx-auto">
           {/* Soil Moisture Section */}
-          <div className="rounded-lg shadow-lg bg-gradient-to-br from-red-400 to-red-200  p-6 w-full max-w-md ">
+          <div className="rounded-lg shadow-lg bg-gradient-to-br from-green-400 to-red-200  p-6 w-full max-w-md ">
             <h2 className="text-xl font-semibold mb-4 text-white">
               Soil Moisture
             </h2>
@@ -72,14 +71,14 @@ const Pumpstatus = () => {
           </div>
 
           {/* Pump Status Section */}
-          <div className="rounded-lg shadow-lg bg-gradient-to-br from-amber-200 to-amber-100 p-6 w-full max-w-md ">
+          <div className="rounded-lg shadow-lg bg-gradient-to-br from-green-200 to-amber-100 p-6 w-full max-w-md ">
             <h2 className="text-xl font-semibold mb-4 text-gray-700">
               Pump Status
             </h2>
             <div className="flex items-center justify-between">
               <p
                 className={`text-3xl font-bold ${
-                  pumpStatus === "On" ? "text-green-500" : "text-red-400"
+                  pumpStatus === "On" ? "text-green-500" : "text-blue-400"
                 } `}
               >
                 {pumpStatus}
@@ -120,6 +119,17 @@ const Pumpstatus = () => {
                 alt="Temperature Status"
                 className="h-16 w-16"
               />
+            </div>
+          </div>
+          <div className="rounded-lg shadow-lg bg-gradient-to-br from-teal-300 to-teal-100 p-6 w-full max-w-md ">
+            <h2 className="text-xl font-semibold mb-4 text-gray-700">
+              Water Required (Lt)
+            </h2>
+            <div className="flex items-center justify-between">
+              <p className={`text-3xl font-bold text-black `}>
+                {waterreq.toFixed(1)}
+              </p>
+              <img src={water} alt="Pump Status" className="h-16 w-16" />
             </div>
           </div>
         </div>

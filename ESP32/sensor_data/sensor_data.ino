@@ -4,13 +4,13 @@
 #include <DHT.h>  
 
 // Replace with your Wi-Fi credentials
-const char* ssid = "";
-const char* password = "";
+const char* ssid = "Galaxy S23 FE";
+const char* password = "Yadav@2807";
 
 
 // Your Node.js server endpoint
-const char* serverName = "http://192.168.3.106:3000/data"; // to uplaod sensor data
-const char* controlServer = "http://192.168.3.106:3000/control"; // API to get 1 or 0
+const char* serverName = "http://192.168.168.148:3000/data"; // to uplaod sensor data
+const char* controlServer = "http://192.168.168.148:3000/control"; // API to get 1 or 0
 
 #define DHT_SENSOR_PIN 4
 #define DHT_SENSOR_TYPE DHT11

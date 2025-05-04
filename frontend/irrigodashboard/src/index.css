@@ -1,1 +1,46 @@
+@config "../tailwind.config.js";
+
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white font-medium rounded-lg 
+    transition-all duration-300 hover:bg-primary-dark hover:shadow-lg 
+    focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+  /* focus:ring-opacity-50  add up and bottom */
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-primary border border-primary font-medium rounded-lg 
+    transition-all duration-300 hover:bg-gray-50 hover:shadow-md 
+    focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6;
+  }
+
+  .section-subheading {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto mb-12;
+  }
+
+  .feature-card {
+    @apply bg-white p-6 rounded-xl shadow-lg transition-all duration-300 
+    hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}

@@ -77,7 +77,7 @@ const Dashboard = () => {
         data: historicalData.temperatureData,
         borderColor: "#FF0000",
         backgroundColor: "rgba(255, 0, 0, 0.2)",
-        tension: 0.3,
+        tension: 1,
       },
     ],
   };
@@ -103,7 +103,6 @@ const Dashboard = () => {
           <a href="/">Home</a>
           <a href="/pumpstatus">Pump Status</a>
           <a href="/cropdatabase">Crop Settings</a>
-          <a href="#">Logout</a>
         </div>
       </header>
 
