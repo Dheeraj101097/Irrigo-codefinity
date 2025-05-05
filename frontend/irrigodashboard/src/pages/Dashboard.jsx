@@ -16,8 +16,6 @@ import MoistureCard from "../components/cards/MoistureCard";
 import PumpCard from "../components/cards/PumpCard";
 import WaterRequirementCard from "../components/cards/WaterRequirementCard";
 import TemperatureCard from "../components/cards/TemperatureCard";
-import RecommendationsPanel from "../components/RecommendationsPanel";
-import RainPrediction from "../components/RainPrediction";
 import "chart.js/auto";
 
 // Register Chart.js components
