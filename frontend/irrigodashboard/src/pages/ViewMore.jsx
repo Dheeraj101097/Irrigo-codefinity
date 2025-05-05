@@ -158,7 +158,7 @@ import PumpCard from "../components/cards/PumpCard";
 import WaterRequirementCard from "../components/cards/WaterRequirementCard";
 import TemperatureCard from "../components/cards/TemperatureCard";
 import RecommendationsPanel from "../components/RecommendationsPanel";
-import RainPrediction from "../components/RainPrediction";
+// import RainPrediction from "../components/RainPrediction";
 import "chart.js/auto";
 import Header from "../components/Header";
 
@@ -254,7 +254,7 @@ const ViewMore = () => {
               moisture={data.soilMoisture}
               temperature={data.temperature}
             />
-            <RainPrediction />
+            {/* <RainPrediction /> */}
           </div>
         </main>
       </div>
