@@ -10,7 +10,8 @@
   }
 
   body {
-    @apply bg-white text-gray-800;
+    /* @apply bg-white text-gray-800; */
+    @apply bg-white text-gray-800 antialiased;
   }
 }
 
@@ -42,5 +43,37 @@
 
   .container-custom {
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* 
+ */
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-wave {
+    animation: wave 2s ease-in-out infinite;
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }

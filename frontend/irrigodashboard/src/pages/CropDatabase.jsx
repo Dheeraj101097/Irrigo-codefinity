@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from "react";
+import {
+  Droplet,
+  Thermometer,
+  CloudRain,
+  Leaf,
+  FlaskConical,
+  Waves,
+} from "lucide-react";
+import Header from "../components/Header";
+import maize from "../assets/maize.jpg";
+import potato from "../assets/potato.jpg";
+import rice from "../assets/rice.jpg";
+import tomato from "../assets/tomato.jpg";
+import wheat from "../assets/wheat.jpg";
 
 const crops = [
   {
     name: "Wheat",
+    image: wheat,
     waterRequirement: "500-600 mm",
     temperature: "10-25°C",
     npkValues: "N: 100, P: 50, K: 40",
@@ -13,6 +28,7 @@ const crops = [
   },
   {
     name: "Rice",
+    image: rice,
     waterRequirement: "900-1300 mm",
     temperature: "20-30°C",
     npkValues: "N: 120, P: 60, K: 60",
@@ -23,6 +39,7 @@ const crops = [
   },
   {
     name: "Maize",
+    image: maize,
     waterRequirement: "400-600 mm",
     temperature: "18-27°C",
     npkValues: "N: 90, P: 40, K: 30",
@@ -33,6 +50,7 @@ const crops = [
   },
   {
     name: "Potato",
+    image: potato,
     waterRequirement: "400-600 mm",
     temperature: "15-20°C",
     npkValues: "N: 150, P: 75, K: 100",
@@ -43,6 +61,7 @@ const crops = [
   },
   {
     name: "Tomato",
+    image: tomato,
     waterRequirement: "600-800 mm",
     temperature: "18-25°C",
     npkValues: "N: 120, P: 80, K: 100",
@@ -55,111 +74,90 @@ const crops = [
 
 const CropDatabase = () => {
   const [selectedCrop, setSelectedCrop] = useState(null);
-  const [soilWaterLevel, setSoilWaterLevel] = useState(0); // Example percentage
+  const [soilWaterLevel, setSoilWaterLevel] = useState(0);
 
-  const handleCropChange = (event) => {
-    const crop = crops.find((c) => c.name === event.target.value);
+  const handleCropSelect = (crop) => {
     setSelectedCrop(crop);
   };
+
   const fetchingData = async () => {
     try {
       const response = await fetch("http://localhost:3000/data");
       const responsedata = await response.json();
-      // Update current data
       setSoilWaterLevel(responsedata.soilmoisture);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
   };
+
   useEffect(() => {
     fetchingData();
-    // Update data every 5 seconds
-    setInterval(fetchingData, 5000);
+    const interval = setInterval(fetchingData, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      <header className="bg-green-500 p-4 text-white flex justify-between items-center">
-        <h2 className="text-xl font-bold">Irrigation System Dashboard</h2>
-        <div className="flex justify-evenly space-x-16">
-          <a href="/">Home</a>
-          <a href="/pumpstatus">Pump Status</a>
-          <a href="/cropdatabase">Crop Settings</a>
-        </div>
-      </header>
-      <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-300 p-6 flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-green-800 mb-8">
-          Crop Requirement Database
-        </h1>
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+        <Header />
 
-        <div className="mb-6 w-full max-w-md">
-          <label
-            htmlFor="crop-select"
-            className="block text-lg font-medium text-green-900 mb-2"
-          >
-            Select Crop:
-          </label>
-          <select
-            id="crop-select"
-            onChange={handleCropChange}
-            className="w-full p-2 rounded-lg border-2 border-green-700 bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-green-600"
-          >
-            <option value="">-- Choose a Crop --</option>
+        <main className="px-4 py-6 md:px-8 lg:px-12">
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
+            Crop Requirement Database
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {crops.map((crop) => (
-              <option key={crop.name} value={crop.name}>
-                {crop.name}
-              </option>
+              <div
+                key={crop.name}
+                onClick={() => handleCropSelect(crop)}
+                className={`cursor-pointer rounded-2xl border border-blue-500/30 bg-blue-500/5 p-4 shadow-lg h-full max-w-2xl  text-white ${
+                  selectedCrop?.name === crop.name
+                    ? "ring-4 ring-green-500"
+                    : ""
+                }`}
+              >
+                <img
+                  src={crop.image}
+                  alt={crop.name}
+                  className=" object-contain rounded-2xl"
+                />
+                <div className="p-4 text-gray-300 ">
+                  <h3 className="text-xl text-white text-center font-semibold mb-2">
+                    {crop.name}
+                  </h3>
+                  <div className="flex items-center  mb-1">
+                    <Droplet className="h-5 w-5 mr-2" />
+                    <span>Water Requirement : {crop.waterRequirement}</span>
+                  </div>
+                  <div className="flex items-center mb-1">
+                    <Thermometer className="h-5 w-5 mr-2" />
+                    <span>Temperature : {crop.temperature}</span>
+                  </div>
+                  <div className="flex items-center  mb-1">
+                    <FlaskConical className="h-5 w-5 mr-2" />
+                    <span>npk Values : {crop.npkValues}</span>
+                  </div>
+                  <div className="flex items-center  mb-1">
+                    <CloudRain className="h-5 w-5 mr-2" />
+                    <span>Rainfall : {crop.rainfall}</span>
+                  </div>
+                  <div className="flex items-center  mb-1">
+                    <Leaf className="h-5 w-5 mr-2" />
+                    <span>Soil : {crop.soil}</span>
+                  </div>
+                  <div className="flex items-center  mb-1">
+                    <FlaskConical className="h-5 w-5 mr-2" />
+                    <span>pH : {crop.pH}</span>
+                  </div>
+                  <div className="flex items-center ">
+                    <Waves className="h-5 w-5 mr-2" />
+                    <span>Moisture Level : {crop.moistureLevel}</span>
+                  </div>
+                </div>
+              </div>
             ))}
-          </select>
-        </div>
-
-        {selectedCrop && (
-          <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 className="text-2xl font-bold text-green-800 mb-4">
-              {selectedCrop.name} Requirements
-            </h2>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">Water Requirement:</span>{" "}
-              {selectedCrop.waterRequirement}
-            </p>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">Temperature Range:</span>{" "}
-              {selectedCrop.temperature}
-            </p>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">NPK Values:</span>{" "}
-              {selectedCrop.npkValues}
-            </p>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">Rainfall Requirement:</span>{" "}
-              {selectedCrop.rainfall}
-            </p>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">Soil Type:</span>{" "}
-              {selectedCrop.soil}
-            </p>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">pH Level:</span> {selectedCrop.pH}
-            </p>
-            <p className="text-green-900 mb-2">
-              <span className="font-semibold">Moisture Level:</span>{" "}
-              {selectedCrop.moistureLevel}
-            </p>
           </div>
-        )}
-
-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-bold text-green-800 mb-4">
-            Current Soil Water Level
-          </h2>
-          <div className="relative w-full h-8 bg-gray-200 rounded-full">
-            <div
-              className="h-8 rounded-full bg-green-500"
-              style={{ width: `${soilWaterLevel}%` }}
-            ></div>
-          </div>
-          <p className="text-green-900 mt-2 text-center">{soilWaterLevel}%</p>
-        </div>
+        </main>
       </div>
     </>
   );

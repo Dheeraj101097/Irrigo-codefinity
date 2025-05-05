@@ -154,10 +154,10 @@ const Footer = () => {
                 />
                 <span className="text-gray-400">Bilaspur, C.G. , India</span>
               </li>
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <Phone size={20} className="text-primary mr-3 flex-shrink-0" />
                 <span className="text-gray-400">+91 9337 656566</span>
-              </li>
+              </li> */}
               <li className="flex items-center">
                 <Mail size={20} className="text-primary mr-3 flex-shrink-0" />
                 <span className="text-gray-400">dheerajap6@gmail.com</span>

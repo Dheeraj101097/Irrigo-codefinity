@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto"; // Automatically register all chart components
 import backgroundImage from "../assets/image.png";
+import Dashboard_two from "./components2/Dashboard_two";
 
 const bkg = backgroundImage;
 
@@ -144,6 +145,7 @@ const Dashboard = () => {
           <Line data={realTimeMoistureChartData} />
         </div>
       </div>
+      <Dashboard_two />
     </div>
   );
 };

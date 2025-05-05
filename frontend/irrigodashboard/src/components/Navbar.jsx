@@ -27,15 +27,21 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+      className={`fixed bg- w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white shadow-md py-2"
+          : "bg-white/10 backdrop-blur-lg border border-white/10 py-3"
       }`}
     >
-      <div className="container-custom flex justify-between items-center">
+      <div className="container-custom flex justify-between items-center ">
         <a href="#" className="flex items-center space-x-2">
-          <Droplets className="h-8 w-8 text-blue-200" />
+          <Droplets className="h-8 w-8 text-blue-400" />
           <span className="font-bold text-xl md:text-2xl text-gray-900">
-            <span className="text-fuchsia-200">Irrigo</span>
+            <span
+              className={`${scrolled ? "text-fuchsia-300" : "text-fuchsia-50"}`}
+            >
+              Irrigo
+            </span>
           </span>
         </a>
 
