@@ -82,7 +82,7 @@ const CropDatabase = () => {
 
   const fetchingData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/data");
+      const response = await fetch("https://irrigo-a1.onrender.com/data");
       const responsedata = await response.json();
       setSoilWaterLevel(responsedata.soilmoisture);
     } catch (err) {

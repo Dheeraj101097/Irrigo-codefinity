@@ -185,11 +185,13 @@ const ViewMore = () => {
     const getData = async () => {
       try {
         // setLoading(true);
-        const response = await fetch("http://localhost:3000/data");
+        const response = await fetch("https://irrigo-a1.onrender.com/data");
         const dashboardData = await response.json();
         setData(dashboardData);
 
-        const controlresponse = await fetch("http://localhost:3000/control");
+        const controlresponse = await fetch(
+          "https://irrigo-a1.onrender.com/control"
+        );
         const controlresponsedata = await controlresponse.json();
         setPumpStatus(controlresponsedata.pump_status === 1 ? "On" : "Off");
         setWaterRequired(controlresponsedata.water_required);

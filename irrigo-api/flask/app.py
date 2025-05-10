@@ -19,8 +19,8 @@ with open("soil-rain-pred.pkl", "rb") as f:
     model_soil_rain = pickle.load(f)
 
 # Backend URLs
-BACKEND_URL = "http://localhost:3000/data"
-CONTROL_URL = "http://localhost:3000/control"
+BACKEND_URL = "https://irrigo-a1.onrender.com/data"
+CONTROL_URL = "https://irrigo-a1.onrender.com/control"
 
 
 

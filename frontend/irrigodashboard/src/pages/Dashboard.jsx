@@ -52,11 +52,13 @@ const Dashboard_two = () => {
     const getData = async () => {
       try {
         // setLoading(true);
-        const response = await fetch("http://localhost:3000/data");
+        const response = await fetch("https://irrigo-a1.onrender.com/data");
         const dashboardData = await response.json();
         setData(dashboardData);
 
-        const controlresponse = await fetch("http://localhost:3000/control");
+        const controlresponse = await fetch(
+          "https://irrigo-a1.onrender.com/control"
+        );
         const controlresponsedata = await controlresponse.json();
         setPumpStatus(controlresponsedata.pump_status === 1 ? "On" : "Off");
         setWaterRequired(controlresponsedata.water_required);
@@ -159,7 +161,6 @@ const Dashboard_two = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
       <Header />
-
       <main className="px-4 py-6 md:px-8 lg:px-12">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
           Smart Irrigation Monitoring

@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 
-//
+// https://irrigo-a1.onrender.com  backend link
 
 let temperature = null;
 let humidity = null;
@@ -17,7 +17,7 @@ let soilmoisture = null;
 let pump_status = null;
 let water_required = null;
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Smart Irrigation System Irrigo , View More ");
 });
 app.post("/data", (req, res) => {
   console.log("Data received:", req.body);
