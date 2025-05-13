@@ -9,6 +9,7 @@ const bkg = backgroundImage;
 import CropDatabase from "./pages/CropDatabase";
 import Home from "./pages/Home";
 import ViewMore from "./pages/ViewMore";
+import { Analytics } from "@vercel/analytics/next";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/viewmore" element={<ViewMore />} />
         <Route path="/cropdatabase" element={<CropDatabase />} />
       </Routes>
+      <Analytics />
     </>
   );
 };
